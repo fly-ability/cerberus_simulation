@@ -1,0 +1,74 @@
+<launch>
+  <arg name="run_rviz" default="false" />
+
+  <arg name="mav_name" default="elios"/>
+  <arg name="world_name" default="empty"/>
+  <arg name="enable_logging" default="false" />
+  <arg name="enable_ground_truth" default="true" />
+  <arg name="log_file" default="$(arg mav_name)" />
+  <arg name="use_sim_time" value="true" />
+  <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find rotors_gazebo)/models"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rotors_gazebo)/worlds/$(arg world_name).world"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>
+  </include>
+
+  <group ns="$(arg mav_name)">
+    <!-- spawn robot -->
+    <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
+      <arg name="mav_name" value="$(arg mav_name)" />
+      <arg name="model" value="$(find flya_description)/urdf/mav_generic_odometry_sensor.gazebo" />
+      <arg name="enable_logging" value="$(arg enable_logging)" />
+      <arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
+      <arg name="log_file" value="$(arg log_file)"/>
+      <arg name="z" value="2.0" />
+    </include>
+
+  <!-- joystick -->
+  <!-- <node name="joy_node" pkg="joy" type="joy_node" >
+    <param name="is_velocity_control" value="false" />
+  </node> -->
+
+  <node name="rotors_joy_interface" pkg="flya_joy_interface" type="rotors_joy_interface" />
+  <!-- prop motor controller -->
+  <node name="quaternion_controller_node" pkg="flya_control" type="quaternion_controller_node" output="screen">
+    <rosparam
+      command="load" file="$(find flya_gazebo)/resource/quaternion_controller_$(arg mav_name).yaml" />
+      <rosparam command="load" file="$(find flya_gazebo)/resource/$(arg mav_name).yaml" />
+      <param name="alt_hold_mode" value="true" />
+      <remap from="odometry" to="odometry_sensor1/odometry" />
+    </node>
+
+    <!-- joint and tf publishers -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+      respawn="false" output="screen">
+    </node>
+
+    <!-- RVIZ -->
+    <node if="$(arg run_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find flya_gazebo)/rviz/config.rviz" />
+
+    <!-- Load controllers -->
+    <rosparam file="$(find flya_description)/config/joints.yaml" command="load"/>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+      respawn="true" output="screen"
+      args="lidar_joint_position_controller
+      joint_state_controller
+      --shutdown-timeout 60">
+    </node>
+  </group>
+
+  <!-- way point navigation -->
+  <node name="waypoint_controller_node" pkg="flya_control" type="waypoint_controller_node" output="screen">
+    <rosparam command="load" file="$(find flya_control)/resource/waypoint_controller_parameters.yaml" />
+    <remap from="/command/roll_pitch_yawrate_thrust" to="$(arg mav_name)/command/roll_pitch_yawrate_thrust" />
+    <remap from="odometry" to="$(arg mav_name)/odometry_sensor1/odometry" />
+  </node>
+  
+  <!-- start rotating lidar -->
+  <node pkg="rostopic" type="rostopic" name="rostopic" args="pub /elios/lidar_joint_position_controller/command std_msgs/Float64 'data: 6.283'"/>
+
+</launch>

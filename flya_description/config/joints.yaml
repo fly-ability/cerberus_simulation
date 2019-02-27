@@ -1,0 +1,9 @@
+# elios:
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 20
+
+lidar_joint_position_controller:
+  type: effort_controllers/JointVelocityController
+  joint: lidar_joint
+  pid: {p: .00001, i: 0, d: 0}

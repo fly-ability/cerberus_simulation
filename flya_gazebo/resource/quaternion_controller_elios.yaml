@@ -1,0 +1,16 @@
+# quaternion controller parameters
+attitude_gain: {x: 18, y: 18, z: 15}
+attitude_saturation: {x: 6.2832, y: 6.2832, z: 3.1416}
+angular_rate_gain: {x: 12, y: 12, z: 9}
+angular_rate_saturation: {x: 35, y: 35, z: 20}
+neglect_yaw: 40.0
+max_esc: 100.0
+min_esc: 10.0
+max_rotor_velocity: 2076.8
+alt_gain: {z: 5.0, vz: 40.0}
+alt_min: -2.0
+alt_max: 2.5
+min_thrust: 30.0
+thrust_apriori: 70.0
+alt_stick_gain: 0.015
+delta_alt_saturation: 2.0

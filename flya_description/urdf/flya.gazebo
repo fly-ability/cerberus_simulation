@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<robot>
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/elios</robotNamespace>
+  </plugin>
+</gazebo>
+
+<gazebo reference="front_camera">
+  <material>Gazebo/Green</material>
+  <sensor type="camera" name="front_camera">
+    <update_rate>30.0</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>1920</width>
+        <height>1080</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>300</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>0.0</updateRate>
+      <cameraName>flya/front_camera</cameraName>
+      <imageTopicName>image_raw</imageTopicName>
+      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      <frameName>cv_cam</frameName>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<gazebo reference="of1">
+  <material>Gazebo/Green</material>
+  <sensor type="camera" name="of1">
+    <update_rate>30.0</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>35</width>
+        <height>35</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>300</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>0.0</updateRate>
+      <cameraName>flya/of1</cameraName>
+      <imageTopicName>image_raw</imageTopicName>
+      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      <frameName>of1</frameName>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<gazebo reference="of2">
+  <material>Gazebo/Green</material>
+  <sensor type="camera" name="of2">
+    <update_rate>30.0</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>35</width>
+        <height>35</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>300</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>0.0</updateRate>
+      <cameraName>flya/of2</cameraName>
+      <imageTopicName>image_raw</imageTopicName>
+      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      <frameName>of2</frameName>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+    </plugin>
+  </sensor>
+</gazebo>
+
+
+<gazebo reference="of3">
+  <material>Gazebo/Green</material>
+  <sensor type="camera" name="of3">
+    <update_rate>30.0</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>35</width>
+        <height>35</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>300</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>0.0</updateRate>
+      <cameraName>flya/of3</cameraName>
+      <imageTopicName>image_raw</imageTopicName>
+      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      <frameName>of3</frameName>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<gazebo reference="of4">
+  <material>Gazebo/Green</material>
+  <sensor type="camera" name="of4">
+    <update_rate>30.0</update_rate>
+    <camera name="head">
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>35</width>
+        <height>35</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.02</near>
+        <far>300</far>
+      </clip>
+    </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>0.0</updateRate>
+      <cameraName>flya/of4</cameraName>
+      <imageTopicName>image_raw</imageTopicName>
+      <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+      <frameName>of4</frameName>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+    </plugin>
+  </sensor>
+</gazebo>
+<!-- hokuyo -->
+<gazebo reference="hokuyo">
+  <sensor type="ray" name="head_hokuyo_sensor">
+    <pose>0 0 0 0 0 0</pose>
+    <visualize>false</visualize>
+    <update_rate>40</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>1080</samples>
+          <resolution>1</resolution>
+          <min_angle>-2.36</min_angle>
+          <max_angle>2.36</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.05</min>
+        <max>30.0</max>
+        <resolution>0.01</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+      <topicName>/flya/laser/scan</topicName>
+      <frameName>/hokuyo</frameName>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<!-- barometer -->
+<gazebo>
+  <plugin name="quadrotor_baro_sim" filename="libhector_gazebo_ros_baro.so">
+    <updateRate>10.0</updateRate>
+    <!-- <bodyName>elios/base_link</bodyName>
+    <frameId>elios/base_link_inertia</frameId> -->
+    <bodyName>elios/base_link_inertia</bodyName>
+    <frameId>elios/base_link_inertia</frameId>
+    <topicName>pressure_height</topicName>
+    <altimeterTopicName>altimeter</altimeterTopicName>
+    <offset>0</offset>
+    <drift>10.0</drift>
+    <gaussianNoise>0.1</gaussianNoise>
+  </plugin>
+</gazebo>
+
+<plugin name='rotors_gazebo_imu_plugin' filename='librotors_gazebo_imu_plugin.so'>
+  <robotNamespace>elios</robotNamespace>
+  <linkName>elios/base_link_inertia</linkName>
+  <imuTopic>/imu</imuTopic>
+  <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
+  <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
+  <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
+  <gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
+  <accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
+  <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
+  <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
+  <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
+</plugin>
+
+</robot>

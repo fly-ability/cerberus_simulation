@@ -1,0 +1,11 @@
+repetition: 2
+position_gain: {x: 1.2, y: 1.2, z: 1.5}
+velocity_gain: {x: 22.0, y: 22.0, z: 25.0}
+velocity_integral_gain: {x: 3.5, y: 3.5, z: 5.5}
+position_saturation: {x: 1.5, y: 1.5, z: 2}
+velocity_integral_saturation: {x: 20.0, y: 20.0, z: 20.0}
+velocity_saturation: {x: 50.0, y: 50.0, z: 35.0}
+yaw_gain: 40.0
+yaw_rate_gain: 0
+yaw_saturation: 30.0
+file_name: '/home/developer/subt_ws/src/simulation_package/rotors_automatest/resource/stepresponse_waypoints.txt'
